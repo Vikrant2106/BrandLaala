@@ -1,0 +1,15 @@
+export const inputType = {
+  input: "input",
+  select: "select",
+  textarea: "textarea",
+  checkbox: "checkbox",
+  radio: "radio",
+  date: "date",
+  autocomplete: "autocomplete",
+  switch: "switch",
+  file: "file",
+  number: "number",
+  checkboxgroup: "checkboxgroup",
+  simplefile: "simplefile",
+  overviewfileinput: "overviewfileinput",
+};

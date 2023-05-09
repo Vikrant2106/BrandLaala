@@ -11,6 +11,9 @@ import {
 import { inputType } from "../components/utils/enum.js";
 import { useFormik } from "formik";
 import { inquiryValidationSchema } from "../components/utils/validation.js";
+import axios from 'axios';
+import { successToast,failureToast
+ } from '../components/toast/toast.js';
 
 
 function AddCustomerModal({fncChangeState,isShow}) {
@@ -26,7 +29,11 @@ function AddCustomerModal({fncChangeState,isShow}) {
         last_name:"",
         email:"",
         mobile:"",
-        start_date:startDate,
+        dob:"",
+        fb_id:"",
+        insta_id:"",
+        start_date:"",
+        enquiry:""
       };
     
     
@@ -39,14 +46,20 @@ function AddCustomerModal({fncChangeState,isShow}) {
             }
           : INIT_STATE,
         onSubmit: onSubmit,
-        validationSchema: inquiryValidationSchema,
+        // validationSchema: inquiryValidationSchema,
       });
-    
-    
-      function onSubmit(data) {
+
+     
+      async function onSubmit(data) {
         console.log(data)
-       
-       
+        let res = await axios.post(
+          `${process.env.REACT_APP_API_URL}enquiry`,{...data}
+        );
+
+        successToast("Data added successfully")
+        console.log("data",res?.data?.data)
+
+      
       }
 	
 	return (
@@ -124,7 +137,6 @@ function AddCustomerModal({fncChangeState,isShow}) {
               />
           </Card>
           <Card style={{width:"100%"}} className="mb-3">
- 
           <Element
                 eletype={inputType.input}
                 label="Facebook"
@@ -138,6 +150,7 @@ function AddCustomerModal({fncChangeState,isShow}) {
                 value={values.facebook_account}
               />
           </Card>
+
           <Card style={{width:"100%"}} className="mb-3">
           <Element
                 eletype={inputType.input}
@@ -152,11 +165,25 @@ function AddCustomerModal({fncChangeState,isShow}) {
                 value={values.instagram_account}
               />
           </Card>
+<Card style={{width:"100%"}} className="mb-3 custom-datepicker">
+          <Element
+                eletype={inputType.date}
+                label="Please select date of birth"
+                placeholder="Please select date of birth"
+                inputProps={{
+                  onChange: handleChange,
+                  onBlur: handleBlur,
+                  name: "dob",
+                }}
+                errorText={touched.dob && errors.dob}
+                value={values.dob}
+              />
+          </Card>
           <Card style={{width:"100%"}} className="mb-3 custom-datepicker">
           <Element
                 eletype={inputType.date}
                 label="Please select a date"
-                placeholder="Please select a date"
+                placeholder="please select date of visit"
                 inputProps={{
                   onChange: handleChange,
                   onBlur: handleBlur,
@@ -164,6 +191,20 @@ function AddCustomerModal({fncChangeState,isShow}) {
                 }}
                 errorText={touched.start_date && errors.start_date}
                 value={values.start_date}
+              />
+          </Card>
+          <Card style={{width:"100%"}} className="mb-3">
+          <Element
+                eletype={inputType.textarea}
+                label="Enquired details"
+                placeholder="please enter your enquiry"
+                inputProps={{
+                  onChange: handleChange,
+                  onBlur: handleBlur,
+                  name: "enquiry",
+                }}
+                errorText={touched.enquiry && errors.enquiry}
+                value={values.enquiry}
               />
           </Card>
           </div>

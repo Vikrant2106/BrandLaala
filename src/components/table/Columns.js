@@ -29,6 +29,21 @@ export const COLUMNS = [
 		accessor: 'gender'
 	},
 	{
+		Header: 'Dob',
+		Footer: 'dob',
+		accessor: 'dob'
+	},
+	{
+		Header: 'Instagram',
+		Footer: 'instagram',
+		accessor: 'insta_id'
+	},
+	{
+		Header: 'Facebook',
+		Footer: 'facebook',
+		accessor: 'fb_id'
+	},
+	{
 		Header: 'Mobile',
 		Footer: 'mobile',
 		accessor: 'mobile'

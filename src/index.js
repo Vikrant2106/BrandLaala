@@ -12,6 +12,7 @@ import '@fortawesome/fontawesome-free/css/all.css';
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import './index.css';
 import './scss/styles.scss';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const container = document.getElementById('root');

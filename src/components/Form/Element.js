@@ -53,9 +53,10 @@ function Element({
   function renderTextarea() {
     return (
       <div className={classes.formGroup}>
-        <label className={classes.formLabel}>{label}</label>
+        {/* <label className={classes.formLabel}>{label}</label> */}
         <textarea
-          className={classes.textareaFormControl}
+        style={{width:"100%",background:"none"}}
+          // className={classes.textareaFormControl}
           type="text"
           cols="4"
           rows="6"
@@ -63,6 +64,7 @@ function Element({
           value={!value ? "" : value}
           autoComplete="off"
           {...rest}
+          placeholder={placeholder}
         />
         {errorText && (
           <span className={classes.formErrorStyle}>{errorText}</span>
@@ -118,7 +120,7 @@ function Element({
               });
             }}
             autoComplete="off"
-            placeholderText={inputProps?.placeholder}
+            placeholderText={placeholder}
           />
           {errorText && (
             <span className={classes.formErrorStyle}>{errorText}</span>

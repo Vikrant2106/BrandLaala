@@ -45,7 +45,7 @@ const NumberInput = ({
     <div className={classes.formGroup}>
       {/* {label ? <label className={classes.formLabel}>{label}</label> : null} */}
       <input
-        className="form-control form-control-md"
+        className="form-control form-control-lg bg-white bg-opacity-5"
         style={styles}
         {...inputProps}
         value={value}

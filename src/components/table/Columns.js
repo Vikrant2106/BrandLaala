@@ -23,25 +23,25 @@ export const COLUMNS = [
 		Footer: 'email',
 		accessor: 'email'
 	},
-	{
-		Header: 'Gender',
-		Footer: 'gender',
-		accessor: 'gender'
-	},
-	{
-		Header: 'Dob',
-		Footer: 'dob',
-		accessor: 'dob'
-	},
+	// {
+	// 	Header: 'Gender',
+	// 	Footer: 'gender',
+	// 	accessor: 'gender'
+	// },
+	// {
+	// 	Header: 'Dob',
+	// 	Footer: 'dob',
+	// 	accessor: 'dob'
+	// },
 	{
 		Header: 'Instagram',
 		Footer: 'instagram',
-		accessor: 'insta_id'
+		accessor: 'instagram_account'
 	},
 	{
 		Header: 'Facebook',
 		Footer: 'facebook',
-		accessor: 'fb_id'
+		accessor: 'facebook_account'
 	},
 	{
 		Header: 'Mobile',
@@ -53,15 +53,15 @@ export const COLUMNS = [
 		Footer: 'Visit Date',
 		accessor: 'enquiry_date'
 	},
-// 	{
-// 		Header: 'Action',
-// 		Footer: 'Action',
-// 		accessor: 'action',
-// 		Cell: ({ row }) => (<>
-// 			<span onClick={() => setLgShow(true)}  style={{marginRight:"15px"}} className="bi  bi-eye" ></span>
-// <span className="bi bi-trash" ></span>
-// 			</>)
-// 	},
+	{
+		Header: 'Action',
+		Footer: 'Action',
+		accessor: 'action',
+		Cell: ({ row }) => (<>
+			<span  style={{marginRight:"15px"}} className="bi  bi-eye" ></span>
+<span className="bi bi-trash" ></span>
+			</>)
+	},
 
 ]
 

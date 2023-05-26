@@ -12,7 +12,6 @@ import {
 } from "./../../components/card/card.jsx";
 import Chart from "react-apexcharts";
 import axios from "axios";
-import { socket } from "../../socket/SocketConnection.js";
 import { Link, useParams } from "react-router-dom";
 import DateRangePicker from "react-bootstrap-daterangepicker";
 import DatePicker from "react-datepicker";
@@ -199,24 +198,7 @@ function LogDetails() {
 
 
 
-  useEffect(() => {
-    function onConnect(data) {
-      // console.log("data", data);
-    }
-
-    function onDisconnect(data) {
-      // console.log("data", data);
-    }
-    socket.on("connect", onConnect);
-    socket.on("disconnect", onDisconnect);
-    socket.on("agent_added", doGetRequest);
-
-    return () => {
-      socket.off("connect", onConnect);
-      socket.off("disconnect", onDisconnect);
-      socket.off("agent_added", doGetRequest);
-    };
-  }, []);
+ 
 
   // function for getting process chat data
   const getState = (processData) => {

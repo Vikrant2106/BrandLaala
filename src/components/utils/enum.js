@@ -1,5 +1,6 @@
 export const inputType = {
   input: "input",
+  passwordinput:"passwordinput",
   select: "select",
   textarea: "textarea",
   checkbox: "checkbox",

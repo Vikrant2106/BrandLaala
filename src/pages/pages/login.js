@@ -1,6 +1,12 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { AppSettings } from './../../config/app-settings.js';
+import Element from '../../components/Form/Element.js';
+import { inputType } from '../../components/utils/enum.js';
+import { useFormik } from "formik";
+import axios from 'axios';
+import { successToast } from '../../components/toast/toast.js';
+import { signInValidationSchema } from '../../components/utils/validation.js';
 
 function PagesLogin() {
 	const context = useContext(AppSettings);
@@ -19,12 +25,41 @@ function PagesLogin() {
 		
 		// eslint-disable-next-line
 	}, []);
+
+	const INIT_STATE = {
+        username:"",
+        password:"",
+      };
+    
+	//   signInValidationSchema
+      const { values, touched, errors, handleChange, handleBlur, handleSubmit } =
+      useFormik({
+        enableReinitialize: true,
+        initialValues:  INIT_STATE,
+        onSubmit: onSubmit,
+        validationSchema: signInValidationSchema ,
+      });
+
+      async function onSubmit(data) {
+          let res = await axios.post(
+            `${process.env.REACT_APP_API_URL}user/login/`,{
+				...data
+			}, {
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            }
+          );
+		  localStorage.setItem("UD",JSON.stringify(res?.data?.data))
+		  setRedirect(true);
+       
+      }
 	
-	function handleSubmit(event) {
-		event.preventDefault();
+// 	function handleSubmit(event) {
+// 		event.preventDefault();
 		
-		setRedirect(true);
-  }
+// 		setRedirect(true);
+//   }
   
 	if (redirect) {
 		return <Navigate to='/' />;
@@ -38,21 +73,45 @@ function PagesLogin() {
 						For your protection, please verify your identity.
 					</div>
 					<div className="mb-3">
-						<label className="form-label">Email Address <span className="text-danger">*</span></label>
-						<input type="text" className="form-control form-control-lg bg-white bg-opacity-5" placeholder="" />
+						<label className="form-label">Username <span className="text-danger">*</span></label>
+						<Element
+                eletype={inputType.input}
+                label="User Name"
+                placeholder="Please enter username"
+                inputProps={{
+                  onChange: handleChange,
+                  onBlur: handleBlur,
+                  name: "username",
+                }}
+                errorText={touched.username && errors.username}
+                value={values.username}
+              />
+						{/* <input type="text" onChange={} className="form-control form-control-lg bg-white bg-opacity-5" placeholder="" /> */}
 					</div>
 					<div className="mb-3">
 						<div className="d-flex">
 							<label className="form-label">Password <span className="text-danger">*</span></label>
-							<a href="#/" className="ms-auto text-inverse text-decoration-none text-opacity-50">Forgot password?</a>
+							{/* <a href="#/" className="ms-auto text-inverse text-decoration-none text-opacity-50">Forgot password?</a> */}
 						</div>
-						<input type="password" className="form-control form-control-lg bg-white bg-opacity-5" placeholder="" />
+						<Element
+                eletype={inputType.passwordinput}
+                label="First Name"
+                placeholder="Please enter your password"
+                inputProps={{
+                  onChange: handleChange,
+                  onBlur: handleBlur,
+                  name: "password",
+                }}
+                errorText={touched.password && errors.password}
+                value={values.password}
+              />
+						{/* <input type="password" className="form-control form-control-lg bg-white bg-opacity-5" placeholder="" /> */}
 					</div>
 					<div className="mb-3">
-						<div className="form-check">
+						{/* <div className="form-check">
 							<input className="form-check-input" type="checkbox" id="customCheck1" />
 							<label className="form-check-label" htmlFor="customCheck1">Remember me</label>
-						</div>
+						</div> */}
 					</div>
 					<button type="submit" className="btn btn-outline-theme btn-lg d-block w-100 fw-500 mb-3">Sign In</button>
 					<div className="text-center text-inverse text-opacity-50">

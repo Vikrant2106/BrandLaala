@@ -53,6 +53,7 @@ import Calendar from './../pages/calendar/calendar.js';
 import Settings from './../pages/settings/settings.js';
 import Helper from './../pages/helper/helper.js';
 import LogDetails from '../pages/logdetails/logdetails.js';
+import TailorForm from '../pages/buyers/tailorForm.js';
 
 const AppRoute = [
   {
@@ -64,6 +65,7 @@ const AppRoute = [
 		{ path: '', element: <Navigate to='/logdetails' /> },
 		{ path: 'analytics/:agentID/:id', element: <LogDetails /> },
     	{ path: 'buyers', element: <Buyers /> },
+    	{ path: 'printform', element: <TailorForm /> },
     	{ path: 'inquiry', element: <Inquiry /> },
     	{ path: 'email/*', 
     		children: [

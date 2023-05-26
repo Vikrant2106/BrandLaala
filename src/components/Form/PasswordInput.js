@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useStyles } from "./Form.theme";
 
-const Input = ({
+const PasswordInput = ({
   label,
   errorText,
   inputProps,
@@ -25,6 +25,7 @@ const Input = ({
         value={value}
         placeholder={placeholder}
         autoComplete="off"
+        type="password"
       />
       {param === "ADDUSER" ? (
         <div style={{ top: "12px", position: "relative" }}> {icon} </div>
@@ -38,4 +39,4 @@ const Input = ({
   );
 };
 
-export default Input;
+export default PasswordInput;

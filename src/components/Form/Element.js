@@ -10,8 +10,10 @@ import NumberInput from "./Number";
 import CheckboxList from "./CheckBoxGroup";
 import SimpleFileInput from "./SimpleFileInput";
 import OverviewFileInput from "./OverviewFileInput";
+import PasswordInput from "./PasswordInput";
 
 function Element({
+  buyerid,
   eletype,
   label,
   errorText,
@@ -23,10 +25,24 @@ function Element({
   name,
   ...rest
 }) {
+
   const classes = useStyles;
   function renderInput() {
     return (
       <Input
+        label={label}
+        errorText={errorText}
+        inputProps={inputProps}
+        value={value}
+        placeholder={placeholder}
+        {...rest}
+      />
+    );
+  }
+
+  function renderPasswordInput() {
+    return (
+      <PasswordInput
         label={label}
         errorText={errorText}
         inputProps={inputProps}
@@ -56,7 +72,7 @@ function Element({
         {/* <label className={classes.formLabel}>{label}</label> */}
         <textarea
         style={{width:"100%",background:"none"}}
-          // className={classes.textareaFormControl}
+          className="form-control form-control-lg bg-white bg-opacity-5"
           type="text"
           cols="4"
           rows="6"
@@ -101,16 +117,16 @@ function Element({
         <div className={classes.formGroup}>
           {/* <label className={classes.formLabel}>{label}</label> */}
           <DatePicker
-            className={
-              inputProps.disabled
-                ? classes.formControlDisabled
-                : classes.formControl
-            }
+            className="form-control form-control-lg bg-white bg-opacity-5"
             style={{ zIndex: "1000" }}
             selected={!value ? "" : value}
             dateFormat="dd/MM/yyyy"
             {...inputProps}
             {...rest}
+            peekNextMonth
+            showMonthDropdown
+            showYearDropdown
+            dropdownMode="select"
             onChange={(date) => {
               inputProps.onChange({
                 target: {
@@ -145,6 +161,7 @@ function Element({
   return (
     <>
       {eletype === inputType.input && renderInput()}
+      {eletype === inputType.passwordinput && renderPasswordInput()}
       {eletype === inputType.number && renderNumberInput()}
       {eletype === inputType.select && renderSelect()}
       {eletype === inputType.textarea && renderTextarea()}
@@ -156,6 +173,7 @@ function Element({
       )}
       {eletype === inputType.file && (
         <FileInput
+        buyerid={buyerid}
           label={label}
           {...inputProps}
           {...rest}

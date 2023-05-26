@@ -74,6 +74,12 @@ function PagesRegister() {
 		<div className="register">
 			<div className="register-content">
 				<form onSubmit={handleSubmit}>
+				<div className='row' style={{textAlign:"center", marginBottom:"10px"}}>
+						<div className='col-md-12' >
+					<img src="/assets/img/brand.jpeg" height="125" width="125" />
+
+						</div>
+					</div>
 					<h1 className="text-center">Sign Up</h1>
 					<p className="text-inverse text-opacity-50 text-center">One Admin ID is all you need to access all the Admin services.</p>
 					<div className="mb-3">
@@ -179,7 +185,7 @@ function PagesRegister() {
 						<button type="submit" className="btn btn-outline-theme btn-lg d-block w-100">Sign Up</button>
 					</div>
 					<div className="text-inverse text-opacity-50 text-center">
-						Already have an Admin ID? <Link to="/pages/login">Sign In</Link>
+						Already have an Admin ID? <Link to="/login">Sign In</Link>
 					</div>
 				</form>
 			</div>

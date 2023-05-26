@@ -65,11 +65,10 @@ function Header() {
 			</div>
 			
 			<div className="brand">
-				<Link to="/" className="brand-logo">
-					<span className="brand-img">
-						<span className="brand-img-text text-theme">H</span>
-					</span>
-					<span className="brand-text">HUD ADMIN</span>
+				<Link to="/dashboard" className="brand-logo">
+			
+					{/* <span className="brand-text">HUD ADMIN</span> */}
+					<img src="/assets/img/brand.jpeg" height="50px" width="100px" />
 				</Link>
 			</div>
 			

@@ -67,7 +67,17 @@ function PagesLogin() {
 	return (
 		<div className="login">
 			<div className="login-content">
+
+
 				<form onSubmit={handleSubmit}>
+					<div className='row' style={{textAlign:"center", marginBottom:"10px"}}>
+						<div className='col-md-12' >
+					<img src="/assets/img/brand.jpeg" height="125" width="125" />
+
+						</div>
+					</div>
+				
+					
 					<h1 className="text-center">Sign In</h1>
 					<div className="text-inverse text-opacity-50 text-center mb-4">
 						For your protection, please verify your identity.
@@ -115,7 +125,7 @@ function PagesLogin() {
 					</div>
 					<button type="submit" className="btn btn-outline-theme btn-lg d-block w-100 fw-500 mb-3">Sign In</button>
 					<div className="text-center text-inverse text-opacity-50">
-						Don't have an account yet? <Link to="/pages/register">Sign up</Link>.
+						Don't have an account yet? <Link to="/register">Sign up</Link>.
 					</div>
 				</form>
 			</div>

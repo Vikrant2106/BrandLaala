@@ -72,7 +72,7 @@ function PagesLogin() {
 				<form onSubmit={handleSubmit}>
 					<div className='row' style={{textAlign:"center", marginBottom:"10px"}}>
 						<div className='col-md-12' >
-					<img src="/assets/img/brand.jpeg" height="125" width="125" />
+					<img src="/assets/img/user/brand.jpg" height="125" width="125" />
 
 						</div>
 					</div>

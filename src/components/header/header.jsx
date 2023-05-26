@@ -66,9 +66,7 @@ function Header() {
 			
 			<div className="brand">
 				<Link to="/dashboard" className="brand-logo">
-			
-					{/* <span className="brand-text">HUD ADMIN</span> */}
-					<img src="/assets/img/brand.jpeg" height="50px" width="100px" />
+					<img src="/assets/img/user/brand.jpg" alt="companylogo" height="50" width="100" />
 				</Link>
 			</div>
 			

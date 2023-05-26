@@ -52,7 +52,7 @@ function TailorForm({ printData }) {
                         </ul>
                     </div>
                     <div style={{ textAlign: "center" }}>
-                        <img src="/assets/img/brand.jpeg" width="100px" height="100px" />
+                        <img src="/assets/img/user/brand.jpg" width="100px" height="100px" />
                     </div>
                 </div>
 
@@ -91,7 +91,7 @@ function TailorForm({ printData }) {
                 )}
                 <div className="mt-5 pt-5 d-flex align-items-center justify-content-between">
                     <div>
-                        <img src="/assets/img/brand.jpeg" width="100px" height="100px" />
+                        <img src="/assets/img/user/brand.jpg" width="100px" height="100px" />
                     </div>
                     <div>
                        

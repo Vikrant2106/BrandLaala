@@ -119,6 +119,7 @@ function App() {
   var handleScroll = () => {
   	setHasScroll((window.scrollY > 0) ? true : false);
   }
+  
 	
 	return (
 		<AppSettings.Provider value={providerValue}>

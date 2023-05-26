@@ -109,7 +109,7 @@ function TailorForm({ printData }) {
 
             <div className="row mt-4">
                 <div className="col-md-12" style={{textAlign:"right"}}>
-                    <Link to="/" className="btn btn-outline-theme btn-lg" style={{marginRight:"10px"}}> Cancel </Link>
+                    <Link to="/dashboard/buyers" className="btn btn-outline-theme btn-lg" style={{marginRight:"10px"}}> Cancel </Link>
                     <button  className="btn btn-outline-theme btn-lg" onClick={()=> window.print()} >Print</button>
                 </div>
             </div>

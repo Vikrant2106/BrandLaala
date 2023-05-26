@@ -386,7 +386,7 @@ function Buyers() {
                       :<span className="badge bg-warning" style={{cursor:"pointer", padding:"12px"}} onClick={()=>fncOrderCompleted(data)}>Pending</span>}</td>
                       <td class="noBorder">{data?.enquiry}</td>
                       <td class="noBorder">
-                      <Link style={{ marginRight: "15px" }} to={`/printform?id=${data._id}`} className="fa  fa-print"></Link>
+                      <Link style={{ marginRight: "15px" }} to={`/dashboard/printform?id=${data._id}`} className="fa  fa-print"></Link>
                       </td>
                       <td>
                       <span style={{ marginRight: "15px" , fontSize:"22px"}} className="bi  bi-plus" onClick={() => fncDiscountGiven(data)} ></span>

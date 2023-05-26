@@ -77,7 +77,7 @@ function Dashboard() {
              
                   <Card className="mb-3">
                     <CardBody>
-                      <Link to="/buyers" style={{"textDecoration": "none"}}>
+                      <Link to="/dashboard/buyers" style={{"textDecoration": "none"}}>
                       <div className="d-flex fw-bold small mb-3">
                         <span className="flex-grow-1 text-uppercase">
                             Total Buyers Count
@@ -104,7 +104,7 @@ function Dashboard() {
               
                   <Card className="mb-3">
                     <CardBody>
-                      <Link to="/inquiry" style={{"textDecoration": "none"}}>
+                      <Link to="/dashboard/inquiry" style={{"textDecoration": "none"}}>
                       <div className="d-flex fw-bold small mb-3">
                         <span className="flex-grow-1 text-uppercase">
                             Total Enquiries Count

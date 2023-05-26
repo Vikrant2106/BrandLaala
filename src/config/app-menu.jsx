@@ -1,8 +1,8 @@
 const Menu = [
 	{ is_header: true, title: 'Navigation' },
 	{ path: '/dashboard', icon: 'bi bi-cpu', title: 'Home' },
-	{ path: '/inquiry', icon: 'fa fa-user-circle', title: 'Enquiry' },
-	{ path: '/buyers', icon: 'fa fa-user', title: 'Buyer' },
+	{ path: '/dashboard/inquiry', icon: 'fa fa-user-circle', title: 'Enquiry' },
+	{ path: '/dashboard/buyers', icon: 'fa fa-user', title: 'Buyer' },
 
 
 	

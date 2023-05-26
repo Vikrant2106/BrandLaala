@@ -66,7 +66,7 @@ function Inquiry() {
 
 
   async function doGetRequest() {
-    let res = await axios.get(
+    let res = await axios.get(  
       `${process.env.REACT_APP_API_URL}enquiries/`
     );
     setEnquiryData(res?.data?.data)

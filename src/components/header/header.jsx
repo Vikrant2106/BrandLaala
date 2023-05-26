@@ -88,7 +88,7 @@ function Header() {
 					<div className="dropdown-menu dropdown-menu-end me-lg-3 fs-11px mt-1">
 						<Link to="/settings" className="dropdown-item d-flex align-items-center">SETTINGS <i className="bi bi-gear ms-auto text-theme fs-16px my-n1"></i></Link>
 						<div className="dropdown-divider"></div>
-						<Link to="/pages/login" onClick={()=> localStorage.removeItem("UD")} className="dropdown-item d-flex align-items-center">LOGOUT <i className="bi bi-toggle-off ms-auto text-theme fs-16px my-n1"></i></Link>
+						<Link to="/login" onClick={()=> localStorage.removeItem("UD")} className="dropdown-item d-flex align-items-center">LOGOUT <i className="bi bi-toggle-off ms-auto text-theme fs-16px my-n1"></i></Link>
 					</div> 
 				</div>
 			</div>

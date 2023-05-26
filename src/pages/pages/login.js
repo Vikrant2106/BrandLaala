@@ -62,7 +62,7 @@ function PagesLogin() {
 //   }
   
 	if (redirect) {
-		return <Navigate to='/' />;
+		return <Navigate to='/dashboard' />;
 	}
 	return (
 		<div className="login">

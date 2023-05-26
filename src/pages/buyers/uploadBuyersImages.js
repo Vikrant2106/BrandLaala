@@ -49,7 +49,7 @@ function UploadBuyersImages({  buyerid, data, isNewDone ,fncApiCall,fncCloseMode
             redirect: 'follow'
         };
 
-        fetch(`http://65.0.127.246/api/v1/upload/profile_pic/${buyerid==undefined?data.id:buyerid}`, requestOptions)
+        fetch(`${process.env.REACT_APP_API_URL}upload/profile_pic/${buyerid==undefined?data.id:buyerid}`, requestOptions)
             .then(response => response.json())
             .then(result => {
                 

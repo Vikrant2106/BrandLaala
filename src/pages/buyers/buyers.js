@@ -124,7 +124,7 @@ function Buyers() {
 
   async function doGetRequest() {
     let res = await axios .get(
-      `${process.env.REACT_APP_API_URL}buyers`
+      `${process.env.REACT_APP_API_URL}buyers/`
     );
     fncSlicePageData(res?.data?.data);
     // setBuyersData(res?.data?.data)

@@ -354,11 +354,11 @@ function Buyers() {
 
        
             <div class="table-responsive">
-              <table class="table">
+              <table class="table" style={{width:"100%"}}>
                 <thead>
                   <tr>
                     {tableHeaderBuyers?.map((data, i) =>
-                      <th key={i}>
+                      <th className="noBorder" key={i}>
                         {data}
                       </th>
                     )}
@@ -367,28 +367,28 @@ function Buyers() {
                 <tbody>
                   {buyersData?.map((data) =>
                     <tr>
-                      <td class="noBorder"> 
+                      <td className="noBorder"> 
                       <span style={{ marginLeft: "5px" , fontSize:"25px"}} className="fa fa-user-circle" onClick={() => fncViewImageGallery(data)} ></span></td>
-                      <td class="noBorder">{data?.first_name}</td>
-                      <td class="noBorder">{data?.last_name}</td>
-                      <td class="noBorder">{data?.email}</td>
-                      <td class="noBorder">{data?.contact_number}</td>
-                      <td class="noBorder">{data?.facebook_account}</td>
-                      <td class="noBorder">{data?.instagram_account}</td>
-                      <td class="noBorder">{fncTimeStampFormatDate(data?.dob)}</td>
-                      <td class="noBorder">{fncIndianTimeFormat(data?.date)}</td>
-                      <td class="noBorder">{fncTimeStampFormatDate(data?.date_of_delivery)}</td>
-                      <td class="noBorder">{data?.is_delivered?
+                      <td className="noBorder">{data?.first_name}</td>
+                      <td className="noBorder">{data?.last_name}</td>
+                      <td className="noBorder">{data?.email}</td>
+                      <td className="noBorder">{data?.contact_number}</td>
+                      <td className="noBorder">{data?.facebook_account}</td>
+                      <td className="noBorder">{data?.instagram_account}</td>
+                      <td className="noBorder">{fncTimeStampFormatDate(data?.dob)}</td>
+                      <td className="noBorder">{fncIndianTimeFormat(data?.date)}</td>
+                      <td className="noBorder">{fncTimeStampFormatDate(data?.date_of_delivery)}</td>
+                      <td className="noBorder">{data?.is_delivered?
                       <span className="badge bg-success"  style={{padding:"12px"}} >Delivered</span>
                       :<span className="badge bg-primary" style={{cursor:"pointer", padding:"12px"}} onClick={()=>fncOrderDelivered(data)}>Not Delivered</span>}</td>
-                      <td class="noBorder">{data?.is_order_completed?
+                      <td className="noBorder">{data?.is_order_completed?
                       <span className="badge bg-info"  style={{padding:"12px"}} >Order Completed</span>
                       :<span className="badge bg-warning" style={{cursor:"pointer", padding:"12px"}} onClick={()=>fncOrderCompleted(data)}>Pending</span>}</td>
-                      <td class="noBorder">{data?.enquiry}</td>
-                      <td class="noBorder">
+                      <td className="noBorder">{data?.enquiry}</td>
+                      <td className="noBorder">
                       <Link style={{ marginRight: "15px" }} to={`/dashboard/printform?id=${data._id}`} className="fa  fa-print"></Link>
                       </td>
-                      <td>
+                      <td className="actions">
                       <span style={{ marginRight: "15px" , fontSize:"22px"}} className="bi  bi-plus" onClick={() => fncDiscountGiven(data)} ></span>
                         <span style={{ marginRight: "15px" }} className="bi  bi-eye" onClick={() => fncEditData(data)} ></span>
                         <span className="bi bi-trash" onClick={()=> fncDeleteBuyer(data._id)} ></span>

@@ -68,7 +68,7 @@ function PagesRegister() {
 	}
 
 	if (redirect) {
-		return <Navigate to='/pages/login' />;
+		return <Navigate to='/login' />;
 	}
 	return (
 		<div className="register">

@@ -45,10 +45,14 @@ function TailorForm({ printData }) {
                     <div className=" ">
                         <ul style={{ listStyle: "none", paddingLeft: "0" }}>
                             <li>Name : {upperData?.first_name + " " + upperData?.last_name}</li>
-                            <li>Email  : {upperData?.email}</li>
-                            <li>Contact No: {upperData?.contact_number}</li>
-                            <li>Order Date : {fncIndianTimeFormat(upperData?.date)}</li>
+                           
+                            {/* <li>Email  : {upperData?.email}</li> */}
+                            {/* <li>Contact No: {upperData?.contact_number}</li> */}
+                            {/* <li>Order Date : {fncIndianTimeFormat(upperData?.date)}</li> */}
                             <li>Delivery Date : {fncTimeStampFormatDate(upperData?.date_of_delivery)}</li>
+                            <li>MID :
+                                 {/* {upperData?.first_name + " " + upperData?.last_name} */}
+                                 </li>
                         </ul>
                     </div>
                     <div style={{ textAlign: "center" }}>

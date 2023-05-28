@@ -20,39 +20,48 @@ import { successToast } from "../../components/toast/toast.js";
 const ddlOptions = [
     {
         value: "Jwahar",
-        label: "Jwahar"
+        label: "Jwahar",
+        color:"blue",
     },
     {
         value: "Jacket",
-        label: "Jacket"
+        label: "Jacket",
+        color:"red",
     },
     {
         value: "Pant",
-        label: "Pant"
+        label: "Pant",
+        color:"green",
     },
     {
         value: "Coat",
-        label: "Coat"
+        label: "Coat",
+        color:"purple",
     },
     {
         value: "Kurta",
-        label: "kurta"
+        label: "kurta",
+        color:"orange",
     },
     {
         value: "Shirt",
-        label: "Shirt"
+        label: "Shirt",
+        color:"brown",
     },
     {
         value: "Sherwani",
-        label: "Sherwani"
+        label: "Sherwani",
+        color:"pink",
     },
     {
         value: "Indo",
-        label: "Indo"
+        label: "Indo",
+        color:"green",
     },
     {
         value: "Safari",
-        label: "Safari"
+        label: "Safari",
+        color:"blue",
     }
 ]
 
@@ -223,7 +232,11 @@ function BuyersOrder({ buyerid, fncGetOrderId, data, isNewDone, orderID, fncApiC
                                                                 className="row mt-2"
                                                             >
                                                                 <div className="col-md-4">
-                                                                    <span>Please type Jwahar Length</span>
+                                                                    <span style={{
+                                                                        color: values.service.data[index].garment_type==ddlOptions[0].value?ddlOptions[0].color:"white",
+                                                                        fontSize: values.service.data[index].garment_type==ddlOptions[0].value?"18px":"15px",
+                                                                        fontWeight: values.service.data[index].garment_type==ddlOptions[0].value?"600":"500",
+                                                                        }}>Please type Jwahar Length</span>
                                                                     <input
                                                                         placeholder="Please type Jwahar Length"
                                                                         value={values.service.data[index].Jwahar_Length}
@@ -234,7 +247,13 @@ function BuyersOrder({ buyerid, fncGetOrderId, data, isNewDone, orderID, fncApiC
                                                                     />
                                                                 </div>
                                                                 <div className="col-md-4">
-                                                                    <span>Please type Jacket Length</span>
+                                                                    <span
+                                                                    style={{
+                                                                        color: values.service.data[index].garment_type==ddlOptions[1].value?ddlOptions[1].color:"white",
+                                                                        fontSize: values.service.data[index].garment_type==ddlOptions[1].value?"18px":"15px",
+                                                                        fontWeight: values.service.data[index].garment_type==ddlOptions[1].value?"600":"500",
+                                                                    }}
+                                                                    >Please type Jacket Length</span>
                                                                     <input
                                                                         placeholder="TPlease type Jacket Length"
                                                                         value={values.service.data[index].Jacket_Length}
@@ -245,7 +264,13 @@ function BuyersOrder({ buyerid, fncGetOrderId, data, isNewDone, orderID, fncApiC
                                                                     />
                                                                 </div>
                                                                 <div className="col-md-4">
-                                                                    <span>Please type Pant Length</span>
+                                                                    <span
+                                                                     style={{
+                                                                        color: values.service.data[index].garment_type==ddlOptions[2].value?ddlOptions[2].color:"white",
+                                                                        fontSize: values.service.data[index].garment_type==ddlOptions[2].value?"18px":"15px",
+                                                                        fontWeight: values.service.data[index].garment_type==ddlOptions[2].value?"600":"500",
+                                                                    }}
+                                                                    >Please type Pant Length</span>
                                                                     <input
                                                                         placeholder="Please type Pant Length"
                                                                         value={values.service.data[index].Pant_Length}
@@ -261,7 +286,13 @@ function BuyersOrder({ buyerid, fncGetOrderId, data, isNewDone, orderID, fncApiC
                                                                 <br />
                                                                 {/* ---------------- 2  row ----------- */}
                                                                 <div className="col-md-4">
-                                                                    <span>Please type Coat Length</span>
+                                                                    <span
+                                                                     style={{
+                                                                        color: values.service.data[index].garment_type==ddlOptions[3].value?ddlOptions[3].color:"white",
+                                                                        fontSize: values.service.data[index].garment_type==ddlOptions[3].value?"18px":"15px",
+                                                                        fontWeight: values.service.data[index].garment_type==ddlOptions[3].value?"600":"500",
+                                                                    }}
+                                                                    >Please type Coat Length</span>
                                                                     <input
                                                                         placeholder="Please type Coat Length"
                                                                         value={values.service.data[index].Coat_Length}
@@ -272,7 +303,13 @@ function BuyersOrder({ buyerid, fncGetOrderId, data, isNewDone, orderID, fncApiC
                                                                     />
                                                                 </div>
                                                                 <div className="col-md-4">
-                                                                    <span>Please type Kurta Length</span>
+                                                                    <span 
+                                                                     style={{
+                                                                        color: values.service.data[index].garment_type==ddlOptions[4].value?ddlOptions[4].color:"white",
+                                                                        fontSize: values.service.data[index].garment_type==ddlOptions[4].value?"18px":"15px",
+                                                                        fontWeight: values.service.data[index].garment_type==ddlOptions[4].value?"600":"500",
+                                                                    }}
+                                                                    >Please type Kurta Length</span>
                                                                     <input
                                                                         placeholder="Please type Kurta Length"
                                                                         value={values.service.data[index].Kurta_Length}
@@ -283,7 +320,13 @@ function BuyersOrder({ buyerid, fncGetOrderId, data, isNewDone, orderID, fncApiC
                                                                     />
                                                                 </div>
                                                                 <div className="col-md-4">
-                                                                    <span>Please type Shirt Length</span>
+                                                                    <span
+                                                                     style={{
+                                                                        color: values.service.data[index].garment_type==ddlOptions[5].value?ddlOptions[5].color:"white",
+                                                                        fontSize: values.service.data[index].garment_type==ddlOptions[5].value?"18px":"15px",
+                                                                        fontWeight: values.service.data[index].garment_type==ddlOptions[5].value?"600":"500",
+                                                                    }}
+                                                                    >Please type Shirt Length</span>
                                                                     <input
                                                                         placeholder="Please type Shirt Length"
                                                                         value={values.service.data[index].Shirt_Length}
@@ -300,7 +343,13 @@ function BuyersOrder({ buyerid, fncGetOrderId, data, isNewDone, orderID, fncApiC
                                                                 {/* ------------------- 2nd Row ends here ----------------------------- */}
                                                                 {/* ---------------- 3  row ----------- */}
                                                                 <div className="col-md-4">
-                                                                    <span>Please type Sherwani Length</span>
+                                                                    <span
+                                                                      style={{
+                                                                        color: values.service.data[index].garment_type==ddlOptions[6].value?ddlOptions[6].color:"white",
+                                                                        fontSize: values.service.data[index].garment_type==ddlOptions[6].value?"18px":"15px",
+                                                                        fontWeight: values.service.data[index].garment_type==ddlOptions[6].value?"600":"500",
+                                                                    }}
+                                                                    >Please type Sherwani Length</span>
                                                                     <input
                                                                         placeholder="Please type Sherwani Length"
                                                                         value={values.service.data[index].Sherwani_Length}
@@ -311,7 +360,13 @@ function BuyersOrder({ buyerid, fncGetOrderId, data, isNewDone, orderID, fncApiC
                                                                     />
                                                                 </div>
                                                                 <div className="col-md-4">
-                                                                    <span>Please type Indo Length</span>
+                                                                    <span
+                                                                      style={{
+                                                                        color: values.service.data[index].garment_type==ddlOptions[7].value?ddlOptions[7].color:"white",
+                                                                        fontSize: values.service.data[index].garment_type==ddlOptions[7].value?"18px":"15px",
+                                                                        fontWeight: values.service.data[index].garment_type==ddlOptions[7].value?"600":"500",
+                                                                    }}
+                                                                    >Please type Indo Length</span>
                                                                     <input
                                                                         placeholder="Please type Indo Length"
                                                                         value={values.service.data[index].Indo_Length}
@@ -322,7 +377,13 @@ function BuyersOrder({ buyerid, fncGetOrderId, data, isNewDone, orderID, fncApiC
                                                                     />
                                                                 </div>
                                                                 <div className="col-md-4">
-                                                                    <span>Please type Safari Length</span>
+                                                                    <span
+                                                                      style={{
+                                                                        color: values.service.data[index].garment_type==ddlOptions[8].value?ddlOptions[8].color:"white",
+                                                                        fontSize: values.service.data[index].garment_type==ddlOptions[8].value?"18px":"15px",
+                                                                        fontWeight: values.service.data[index].garment_type==ddlOptions[8].value?"600":"500",
+                                                                    }}
+                                                                    >Please type Safari Length</span>
                                                                     <input
                                                                         placeholder="Please type Safari Length"
                                                                         value={values.service.data[index].Safari_Length}

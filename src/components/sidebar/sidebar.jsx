@@ -63,6 +63,7 @@ function Sidebar() {
 		<React.Fragment>
 			<div id="sidebar" className="app-sidebar">
 				<PerfectScrollbar className="app-sidebar-content" options={{suppressScrollX: true}}>
+			
 					<SidebarNav />
 					{/* <div className="p-3 px-4 mt-auto">
 						<a href="/hud-react/documentation/index.html" target="_blank" className="btn d-block btn-outline-theme">
@@ -71,6 +72,8 @@ function Sidebar() {
 					</div> */}
 				</PerfectScrollbar>
 			</div>
+
+
 			<button className="app-sidebar-mobile-backdrop" onClick={toggleAppSidebarMobile}></button>
 		</React.Fragment>
 	)

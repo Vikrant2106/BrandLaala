@@ -52,3 +52,14 @@
   }
 
  
+
+  table {
+    width: 100%;
+    border: 1px solid #000;
+  }
+  th.noBorder {
+    width: 100px !important;
+  }
+  tr.noBorder, td .noBorder {
+    width: 25% !important;
+  }

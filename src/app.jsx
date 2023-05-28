@@ -132,7 +132,7 @@ function App() {
 				(appSidebarNone ? 'app-content-full-width ' : '') + 
 				(appSidebarCollapsed ? 'app-sidebar-collapsed ' : '') + 
 				(appFooter ? 'app-footer-fixed ' : '') + 
-				(hasScroll ? 'has-scroll ' : '')
+				(hasScroll ?  '' : '')
 			}>
 				{!appHeaderNone && (<Header />)}
 				{!appSidebarNone && (<Sidebar />)}

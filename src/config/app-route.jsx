@@ -10,6 +10,7 @@ import LogDetails from '../pages/logdetails/logdetails.js';
 import TailorForm from '../pages/buyers/tailorForm.js';
 import AuthProtector from '../components/Protector/AuthProtector.js';
 import LogoutAuthProtector from '../components/Protector/LogoutAuthProtector.js';
+import Settings from '../pages/settings/settings.js';
 
 
 
@@ -43,6 +44,7 @@ const AppRoute =([
     	{ path: 'buyers', element: <Buyers /> },
     	{ path: 'printform', element: <TailorForm /> },
     	{ path: 'inquiry', element: <Inquiry /> },
+    	{ path: 'settings', element: <Settings /> },
       ],
     },
     {

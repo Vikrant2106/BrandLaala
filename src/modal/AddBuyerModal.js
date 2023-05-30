@@ -20,6 +20,7 @@ import UploadBuyersImages from '../pages/buyers/uploadBuyersImages.js';
 
 
 function AddBuyerModal({ modalEditData, isShow, fncResetModalState, fncApiCall, isNew }) {
+    debugger;
 
     const [lgShow, setLgShow] = useState(false);
     const [isBuyerAdded, setIsBuyerAdded] = useState(false);
@@ -71,7 +72,8 @@ function AddBuyerModal({ modalEditData, isShow, fncResetModalState, fncApiCall, 
             enableReinitialize: true,
             initialValues: modalEditData.id !== undefined
                 ? {
-                    ...modalEditData.data
+                    ...modalEditData.data,dob:modalEditData?.dob,
+                    date_of_delivery: modalEditData.date_of_delivery
                 }
                 : INIT_STATE,
             onSubmit: onSubmit,
@@ -79,6 +81,7 @@ function AddBuyerModal({ modalEditData, isShow, fncResetModalState, fncApiCall, 
         });
 
     async function onSubmit(data) {
+    
         if (modalEditData?.id !== undefined || createdBuyersID !== ""){
             let res = await axios.put(
                 `${process.env.REACT_APP_API_URL}buyer/${modalEditData?.id === undefined ?createdBuyersID :modalEditData?.id}`, { data: { ...data } }, {

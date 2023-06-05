@@ -4,10 +4,10 @@ import Element from "../../components/Form/Element";
 import { inputType } from "../../components/utils/enum.js";
 import { useFormik } from "formik";
 import { changePasswordValidationSchema } from "../../components/utils/validation.js";
-import axios from 'axios';
 import {
   successToast, failureToast
 } from '../../components/toast/toast.js';
+import { defaultAxios } from '../../components/utils/axios/default.axios.js';
 
 function Settings() {
 
@@ -28,10 +28,10 @@ function Settings() {
 		});
 	
 	  async function onSubmit(data) {
-		debugger;
+		  
 		const {confirm_password,...newData} = data;
 		var d = JSON.parse(localStorage.getItem("UD"));
-		  let res = await axios.put(
+		  let res = await defaultAxios.put(
 			`${process.env.REACT_APP_API_URL}user/change_password/${d._id}`, {  ...newData }, {
 			headers: {
 			  'Content-Type': 'application/json'

@@ -8,7 +8,6 @@ import {
   CardExpandToggler,
 } from "./../../components/card/card.jsx";
 import Chart from "react-apexcharts";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import DateRangePicker from "react-bootstrap-daterangepicker";
 import Dropdown from "react-bootstrap/Dropdown";
@@ -17,6 +16,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import "bootstrap/dist/css/bootstrap.css";
 
 import "bootstrap-daterangepicker/daterangepicker.css";
+import { defaultAxios } from "../../components/utils/axios/default.axios.js";
 
 
 
@@ -25,7 +25,7 @@ function Dashboard() {
   const [statsData, setStatsData] = useState();
 
   async function doGetRequest() {
-    let res = await axios.get(
+    let res = await defaultAxios.get(
       `${process.env.REACT_APP_API_URL}dashboard/aggregation/`
     );
      

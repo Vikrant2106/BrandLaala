@@ -4,9 +4,9 @@ import { AppSettings } from './../../config/app-settings.js';
 import Element from '../../components/Form/Element.js';
 import { inputType } from '../../components/utils/enum.js';
 import { useFormik } from "formik";
-import axios from 'axios';
 import { failureToast, successToast } from '../../components/toast/toast.js';
 import { registerValidationSchema } from '../../components/utils/validation.js';
+import { defaultAxios } from '../../components/utils/axios/default.axios.js';
 
 function PagesRegister() {
 	const context = useContext(AppSettings);
@@ -48,7 +48,7 @@ function PagesRegister() {
 
 
 	
-		let res = await axios.post(
+		let res = await defaultAxios.post(
 			`${process.env.REACT_APP_API_URL}user/signup/`, {data:{	...data}}, {
 			headers: {
 				'Content-Type': 'application/json'

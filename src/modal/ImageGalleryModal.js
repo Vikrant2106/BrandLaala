@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
-import axios from 'axios';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+import { defaultAxios } from '../components/utils/axios/default.axios';
 
 
 function ImageGalleryModal({  imageGalleryShow,id ,fncCloseModal}) {
@@ -20,7 +20,7 @@ function ImageGalleryModal({  imageGalleryShow,id ,fncCloseModal}) {
 
     async function getImageData() {
 
-            let res = await axios.get(
+            let res = await defaultAxios.get(
                 `${process.env.REACT_APP_API_URL}buyer/${id}`, {
                 headers: {
                     'Content-Type': 'application/json'

@@ -12,9 +12,9 @@ import { inputType } from "../../components/utils/enum.js";
 import { Formik, FieldArray } from "formik";
 import { buyersValidationSchema } from "../../components/utils/validation.js";
 import AddBuyerModal from "../../modal/AddBuyerModal.js";
-import axios from "axios";
 import { v4 as uuidv4 } from 'uuid';
 import { successToast } from "../../components/toast/toast.js";
+import { defaultAxios } from "../../components/utils/axios/default.axios.js";
 
 
 const ddlOptions = [
@@ -109,16 +109,16 @@ function BuyersOrder({ buyerid, fncGetOrderId, data, isNewDone, orderID, fncApiC
 
     async function fncEditData() {
         if (!isNewDone) {
-            let res = await axios.get(
+            let res = await defaultAxios.get(
                 `${process.env.REACT_APP_API_URL}buyer/${data.id}`
             );
-            debugger;
+              
             var it = res?.data?.data?.orders[0].items
             let dn = [];
             for (var i = 0; i < it.length; i++) {
                 dn.push(it[i])
             }
-            debugger;
+              
             setinitData({
                 data: dn.length>0?dn: [{
                     garment_type: "",
@@ -162,7 +162,7 @@ function BuyersOrder({ buyerid, fncGetOrderId, data, isNewDone, orderID, fncApiC
 
     async function handleSubmit(d) {
         // if (isNewDone) {
-            debugger;
+              
             var newData = [];
             for(var i =0; i<d.service.data.length; i++)
             {
@@ -174,7 +174,7 @@ function BuyersOrder({ buyerid, fncGetOrderId, data, isNewDone, orderID, fncApiC
                     newData.push({...d.service.data[i]})
                 }
             }
-            let res = await axios.put(
+            let res = await defaultAxios.put(
                 `${process.env.REACT_APP_API_URL}buyer_order/${buyerid == undefined ? data.id : buyerid}/${orderID!==""?orderID:data?.data?.orders[0]?._id}`, { data: { items: [...newData] } }
             );
             successToast("Order is successfully created")

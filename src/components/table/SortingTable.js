@@ -4,8 +4,8 @@ import { useTable, useGlobalFilter, useSortBy, usePagination } from 'react-table
 import { Checkbox } from './Checkbox';
 import { Card } from '../card/card';
 import ConfirmationModal from '../../modal/ConfirmationModal';
-import axios from 'axios';
 import { successToast, failureToast } from '../toast/toast';
+import { defaultAxios } from '../utils/axios/default.axios';
 
 
 
@@ -107,7 +107,7 @@ export const TestTable = ({ tData, fncEditModalData, fncApiCall }) => {
     setIsShowConfirmationModal(data)
   }
   async function deleteEnquiryData() {
-    let res = await axios.delete(
+    let res = await defaultAxios.delete(
       `${process.env.REACT_APP_API_URL}enquiry/${selectedDeleteId}`
     );
      

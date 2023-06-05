@@ -11,16 +11,16 @@ import Element from "../components/Form/Element";
 import { inputType } from "../components/utils/enum.js";
 import { useFormik } from "formik";
 import { buyersValidationSchema } from "../components/utils/validation.js";
-import axios from 'axios';
 import {
     successToast, failureToast
 } from '../components/toast/toast.js';
 import BuyersOrder from '../pages/buyers/buyersOrder.js';
 import UploadBuyersImages from '../pages/buyers/uploadBuyersImages.js';
+import { defaultAxios } from '../components/utils/axios/default.axios.js';
 
 
 function AddBuyerModal({ modalEditData, isShow, fncResetModalState, fncApiCall, isNew }) {
-    debugger;
+      
 
     const [lgShow, setLgShow] = useState(false);
     const [isBuyerAdded, setIsBuyerAdded] = useState(false);
@@ -83,7 +83,7 @@ function AddBuyerModal({ modalEditData, isShow, fncResetModalState, fncApiCall, 
     async function onSubmit(data) {
     
         if (modalEditData?.id !== undefined || createdBuyersID !== ""){
-            let res = await axios.put(
+            let res = await defaultAxios.put(
                 `${process.env.REACT_APP_API_URL}buyer/${modalEditData?.id === undefined ?createdBuyersID :modalEditData?.id}`, { data: { ...data } }, {
                 headers: {
                     'Content-Type': 'application/json'
@@ -94,7 +94,7 @@ function AddBuyerModal({ modalEditData, isShow, fncResetModalState, fncApiCall, 
        
         }
         else {
-            let res = await axios.post(
+            let res = await defaultAxios.post(
                 `${process.env.REACT_APP_API_URL}buyer/`, { data: { ...data } }, {
                 headers: {
                     'Content-Type': 'application/json'
@@ -117,10 +117,10 @@ function AddBuyerModal({ modalEditData, isShow, fncResetModalState, fncApiCall, 
 
   async  function addBuyerOrders(buyer_id)
     {
-        let res = await axios.post(
+        let res = await defaultAxios.post(
             `${process.env.REACT_APP_API_URL}buyer_order/${buyer_id}/`, { data: { items: [] } }
         );
-        debugger;
+          
         setOrderID(res?.data?.data?._id);
         
     }

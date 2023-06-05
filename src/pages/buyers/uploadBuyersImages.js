@@ -35,7 +35,7 @@ function UploadBuyersImages({  buyerid, data, isNewDone ,fncApiCall,fncCloseMode
 
 
     async function onSubmit(da) {
-        debugger;
+          
 
         var formdata = new FormData();
         for (var i = 0; i < da.images.length; i++) {

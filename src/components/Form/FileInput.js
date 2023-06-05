@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 // import { userAxios } from "../../utils/axios/user.axios";
 // import { useStyles } from "./Form.theme";
-import axios from "axios";
+// import axios from "axios";
+import { defaultAxios } from "../utils/axios/default.axios";
+
+
 import { successToast } from "../toast/toast";
 
 
@@ -101,7 +104,7 @@ function FileInput({
       setFile(data)
     }
     else {
-      let res = await axios.delete(
+      let res = await defaultAxios.delete(
         `${process.env.REACT_APP_API_URL}upload/profile_pic/${buyerid}/${id}/`
       );
        

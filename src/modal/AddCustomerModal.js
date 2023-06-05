@@ -11,16 +11,17 @@ import Element from "../components/Form/Element";
 import { inputType } from "../components/utils/enum.js";
 import { useFormik } from "formik";
 import { inquiryValidationSchema } from "../components/utils/validation.js";
-import axios from 'axios';
 import {
   successToast, failureToast
 } from '../components/toast/toast.js';
+import { defaultAxios } from '../components/utils/axios/default.axios.js';
 
 
 function AddCustomerModal({ modalEditData, isShow, fncResetModalState, fncApiCall }) {
   const [lgShow, setLgShow] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
 
+    
 
   useEffect(() => {
     setLgShow(isShow)
@@ -43,7 +44,8 @@ function AddCustomerModal({ modalEditData, isShow, fncResetModalState, fncApiCal
       enableReinitialize: true,
       initialValues: modalEditData.id !== undefined
         ? {
-          ...modalEditData.data
+          ...modalEditData.data,
+          dob:modalEditData.data.dob=="Invalid Date"?"":modalEditData.data.dob
         }
         : INIT_STATE,
       onSubmit: onSubmit,
@@ -53,7 +55,7 @@ function AddCustomerModal({ modalEditData, isShow, fncResetModalState, fncApiCal
   async function onSubmit(data) {
 
     if (modalEditData?.id !== undefined) {
-      let res = await axios.put(
+      let res = await defaultAxios.put(
         `${process.env.REACT_APP_API_URL}enquiry/${modalEditData?.id}`, { data: { ...data } }, {
         headers: {
           'Content-Type': 'application/json'
@@ -63,7 +65,7 @@ function AddCustomerModal({ modalEditData, isShow, fncResetModalState, fncApiCal
       successToast(res?.data?.message);
     }
     else {
-      let res = await axios.post(
+      let res = await defaultAxios.post(
         `${process.env.REACT_APP_API_URL}enquiry/`, { data: { ...data } }, {
         headers: {
           'Content-Type': 'application/json'

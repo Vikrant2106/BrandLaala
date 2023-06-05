@@ -11,7 +11,6 @@ import {
   CardHeader,
 } from "./../../components/card/card.jsx";
 import Chart from "react-apexcharts";
-import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import DateRangePicker from "react-bootstrap-daterangepicker";
 import DatePicker from "react-datepicker";
@@ -20,6 +19,7 @@ import "bootstrap-daterangepicker/daterangepicker.css";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { defaultAxios } from "../../components/utils/axios/default.axios.js";
 
 const tableHeaderTCP = [
   "Pid",
@@ -92,7 +92,7 @@ function LogDetails() {
   const [startDate, setStartDate] = useState(new Date());
   async function doGetRequest() {
     
-    let res = await axios.get(
+    let res = await defaultAxios.get(
       `${process.env.REACT_APP_API_URL}agent_detail_data/${id}`
     );
     setAllData(res?.data?.data?.agent_metadata_detail);
@@ -123,7 +123,7 @@ function LogDetails() {
 
   async function getIpAddressRequest(ip) {
 
-    let res = await axios.get(
+    let res = await defaultAxios.get(
       `${process.env.REACT_APP_API_URL}get_ip_analytical_data/${ip}`
     );
 
@@ -251,7 +251,7 @@ function LogDetails() {
   async function getPortData(e) {
  
     setStartDate(e);
-    let portRes = await axios.get(
+    let portRes = await defaultAxios.get(
       `${process.env.REACT_APP_API_URL}agent_ports/${hostIp}?date=${dateFormatter(e)}`
     );
 

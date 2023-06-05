@@ -1,6 +1,6 @@
-import axios from "axios";
 import React, { Fragment, useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { defaultAxios } from "../../components/utils/axios/default.axios";
 
 
 
@@ -29,7 +29,7 @@ function TailorForm({printData}) {
   
   async function fncGetBuyersById() {
         let id= new URLSearchParams(search).get('id')
-        let res = await axios.get(
+        let res = await defaultAxios.get(
             `${process.env.REACT_APP_API_URL}buyer/${id}`
         );
         setPrintableData(res?.data?.data?.orders[0]?.items)

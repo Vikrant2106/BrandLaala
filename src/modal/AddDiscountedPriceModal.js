@@ -8,8 +8,8 @@ import {
 import Modal from 'react-bootstrap/Modal';
 import { Formik, FieldArray } from "formik";
 import { v4 as uuidv4 } from 'uuid';
-import axios from "axios";
 import { successToast } from "../components/toast/toast.js";
+import { defaultAxios } from "../components/utils/axios/default.axios.js";
 
   
 
@@ -46,7 +46,7 @@ function AddDiscountedPriceModal({ data,isDiscountShow ,fncShowHideDiscount, fnc
     }, [data])
 
     async function handleSubmit(d) {
-           debugger;
+             
             var newData=[]
             for(var i =0; i< d.service.data.length ; i++)
             {
@@ -56,7 +56,7 @@ function AddDiscountedPriceModal({ data,isDiscountShow ,fncShowHideDiscount, fnc
                     sale_price:  d.service.data[i].sale_price,
                 })
             }
-            let res = await axios.put(
+            let res = await defaultAxios.put(
                 `${process.env.REACT_APP_API_URL}update/order_price/${data._id}/${data?.orders[0]._id}/`, { data:newData}
             );
             if(res?.data?.status===1){

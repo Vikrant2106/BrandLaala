@@ -4,9 +4,9 @@ import { AppSettings } from './../../config/app-settings.js';
 import Element from '../../components/Form/Element.js';
 import { inputType } from '../../components/utils/enum.js';
 import { useFormik } from "formik";
-import axios from 'axios';
 import { successToast } from '../../components/toast/toast.js';
 import { signInValidationSchema } from '../../components/utils/validation.js';
+import { defaultAxios } from '../../components/utils/axios/default.axios.js';
 
 function PagesLogin() {
 	const context = useContext(AppSettings);
@@ -41,7 +41,7 @@ function PagesLogin() {
       });
 
       async function onSubmit(data) {
-          let res = await axios.post(
+          let res = await defaultAxios.post(
             `${process.env.REACT_APP_API_URL}user/login/`,{
 				...data
 			}, {
@@ -50,6 +50,7 @@ function PagesLogin() {
               }
             }
           );
+		    
 		  localStorage.setItem("UD",JSON.stringify(res?.data?.data))
 		  setRedirect(true);
        

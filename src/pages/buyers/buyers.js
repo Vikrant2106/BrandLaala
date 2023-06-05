@@ -13,7 +13,6 @@ import { inputType } from "../../components/utils/enum.js";
 import { useFormik } from "formik";
 import { buyersValidationSchema } from "../../components/utils/validation.js";
 import AddBuyerModal from "../../modal/AddBuyerModal.js";
-import axios from "axios";
 import { successToast } from "../../components/toast/toast.js";
 import ConfirmationModal from "../../modal/ConfirmationModal.js";
 import ImageGalleryModal from "../../modal/ImageGalleryModal.js";
@@ -21,6 +20,7 @@ import TailorForm from "./tailorForm.js";
 import AddDiscountedPriceModal from "../../modal/AddDiscountedPriceModal.js";
 import _debounce from 'lodash/debounce';
 import DateRangePicker from "react-bootstrap-daterangepicker";
+import { defaultAxios } from "../../components/utils/axios/default.axios.js";
 
 
 const tableHeaderBuyers = [
@@ -52,7 +52,7 @@ function Buyers() {
   const [isShowConfirmationModal, setIsShowConfirmationModal] = useState(false)
   const [imageGalleryShow, setImageGalleryShow] = useState(false)
   const [selectedDeleteId, setSelectedDeleteId] = useState();
-  const [id, setId] = useState();
+  const [id, setId] = useState(null);
   const [isDiscountShow, setIsDiscountShow] = useState(false)
   const [discountData, setDiscountData] = useState(false)
   const [searchedData, setSearchedData] = useState("");
@@ -84,7 +84,7 @@ function Buyers() {
 
   
   async function handleDebounceFn(inputValue,startdate,endDate) {
-    var res = await axios.get(`${process.env.REACT_APP_API_URL}search/buyers/?query=${inputValue}&from=${startdate}&to=${endDate}`)
+    var res = await defaultAxios.get(`${process.env.REACT_APP_API_URL}search/buyers/?query=${inputValue}&from=${startdate}&to=${endDate}`)
     setBuyersData(res?.data?.data);
    setBuyersDataBackUp(res?.data?.data);
 
@@ -97,15 +97,15 @@ function Buyers() {
    }
 
    async function handleDebounceFnMobile(inputValue) {
-    var res = await axios.get(`${process.env.REACT_APP_API_URL}search/buyers/mobile_number/?query=${inputValue}`)
-    setBuyersData(res?.data?.data);
-    setBuyersDataBackUp(res?.data?.data);
+      var res = await defaultAxios.get(`${process.env.REACT_APP_API_URL}search/buyers/mobile_number/?query=${inputValue}`)
+      setBuyersData(res?.data?.data);
+      setBuyersDataBackUp(res?.data?.data);
   }
 
   useEffect(() => {
     doGetRequest();
-    setPageSize(paramLimit);
-    setPage(paramPage);
+    // setPageSize(paramLimit);
+    // setPage(paramPage);
   }, [])
 
   function fncTimeStampFormatDate(dod)
@@ -123,7 +123,7 @@ function Buyers() {
   }
 
   async function doGetRequest() {
-    let res = await axios .get(
+    let res = await defaultAxios .get(
       `${process.env.REACT_APP_API_URL}buyers/`
     );
     fncSlicePageData(res?.data?.data);
@@ -154,7 +154,7 @@ function Buyers() {
   }
 
   async function deleteEnquiryData() {
-    let res = await axios.delete(
+    let res = await defaultAxios.delete(
       `${process.env.REACT_APP_API_URL}buyer/${selectedDeleteId}`
     );
     return res?.data;
@@ -182,7 +182,7 @@ function Buyers() {
 
 
   async function fncEditData(data) {
-    let res = await axios.get(
+    let res = await defaultAxios.get(
       `${process.env.REACT_APP_API_URL}buyer/${data._id}`
     );
     let { _id,...userData} = res?.data?.data;
@@ -222,7 +222,7 @@ function Buyers() {
 
  async function fncOrderDelivered(data)
   {
-    let res = await axios.put(
+    let res = await defaultAxios.put(
       `${process.env.REACT_APP_API_URL}update/order_status/${data._id}/`,{"status":"is_delivered"}
     );
     if(res?.data?.status==1)
@@ -234,8 +234,8 @@ function Buyers() {
 
   async function fncOrderCompleted(data)
   {
-    debugger;
-    let res = await axios.put(
+      
+    let res = await defaultAxios.put(
       `${process.env.REACT_APP_API_URL}update/order_status/${data._id}/`,{
         "status":"is_order_completed"
       }
@@ -299,21 +299,20 @@ function Buyers() {
     <Fragment>
       <Card className="mb-3">
 
-{/* {
-  isPrintVisible &&      <TailorForm printData={printData}/>
-}
-     */}
-
         <AddDiscountedPriceModal 
         fncApiCall={fncApiCall}
         data={discountData}  
         isDiscountShow={isDiscountShow} 
         fncShowHideDiscount={fncShowHideDiscount} />
 
-      <ImageGalleryModal  
-      imageGalleryShow={ imageGalleryShow} 
-      id={id} 
-      fncCloseModal={fncCloseModal}/>
+{
+  id!=null && 
+  <ImageGalleryModal  
+  imageGalleryShow={ imageGalleryShow} 
+  id={id} 
+  fncCloseModal={fncCloseModal}/>
+}
+     
 
 
       <ConfirmationModal

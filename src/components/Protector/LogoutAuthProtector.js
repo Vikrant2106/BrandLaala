@@ -1,8 +1,9 @@
 import { Navigate, json } from "react-router-dom";
 
 function LogoutAuthProtector({ children }) {
-
-  const isLoggedIn = JSON.parse(localStorage.getItem("UD"))?.username !==undefined ?true :false
+    
+  var data = localStorage.getItem("UD") != 'undefined' ?JSON.parse(localStorage.getItem("UD"))?.username : undefined;
+  const isLoggedIn = data !==undefined ?true :false
 
   if (isLoggedIn) return <Navigate to="/dashboard" />;
 

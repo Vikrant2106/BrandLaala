@@ -5,7 +5,6 @@ import {
   CardExpandToggler,
   CardHeader,
 } from "../../components/card/card.jsx";
-import axios from "axios";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import DatePicker from "react-datepicker";
@@ -16,6 +15,7 @@ import { toast } from 'react-toastify';
 import _debounce from 'lodash/debounce';
 import DateRangePicker from "react-bootstrap-daterangepicker";
 import { set } from "lodash";
+import { defaultAxios } from "../../components/utils/axios/default.axios.js";
 
 
 
@@ -50,13 +50,13 @@ function Inquiry() {
 
   async function handleDebounceFn(inputValue,startdate,endDate) {
 
-    var res = await axios.get(`${process.env.REACT_APP_API_URL}search/enquiries/?query=${inputValue}&from=${startdate}&to=${endDate}`)
+    var res = await defaultAxios.get(`${process.env.REACT_APP_API_URL}search/enquiries/?query=${inputValue}&from=${startdate}&to=${endDate}`)
     setEnquiryData(res?.data?.data)
   }
 
   async function handleDebounceFnMobile(inputValue) {
   
-    var res = await axios.get(`${process.env.REACT_APP_API_URL}search/enquiries/mobile_number/?query=${inputValue}`)
+    var res = await defaultAxios.get(`${process.env.REACT_APP_API_URL}search/enquiries/mobile_number/?query=${inputValue}`)
     setEnquiryData(res?.data?.data);
  
 
@@ -66,7 +66,7 @@ function Inquiry() {
 
 
   async function doGetRequest() {
-    let res = await axios.get(  
+    let res = await defaultAxios.get(  
       `${process.env.REACT_APP_API_URL}enquiries/`
     );
     setEnquiryData(res?.data?.data)
